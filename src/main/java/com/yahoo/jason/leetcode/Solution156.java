@@ -15,8 +15,22 @@ package com.yahoo.jason.leetcode;
      4
     / \
    5   2
-  / \
- 3   1
+      / \
+     3   1
  */
 public class Solution156 {
+    public TreeNode upsideDownBinaryTree(TreeNode root) {
+        if (root == null || root.left == null && root.right == null)
+            return root;
+
+        TreeNode newRoot = upsideDownBinaryTree(root.left);
+
+        root.left.left = root.right;
+        root.left.right = root;
+
+        root.left = null;
+        root.right = null;
+
+        return newRoot;
+    }
 }
