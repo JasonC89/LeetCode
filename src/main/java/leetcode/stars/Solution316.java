@@ -28,8 +28,7 @@ public class Solution316 {
             array[s.charAt(i) - 'a']++;
         }
         int index = 0;
-        int i = 0;
-        for (; i < s.length(); i++) {
+        for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) <  s.charAt(index)) {
                 index = i;
             }
