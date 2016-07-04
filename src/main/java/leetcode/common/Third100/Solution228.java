@@ -1,0 +1,42 @@
+package leetcode.common.Third100;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by Jason on 7/2/16.
+ * Summary Ranges
+ *
+ * Given a sorted integer array without duplicates, return the summary of its ranges.
+
+ For example, given [0,1,2,4,5,7], return ["0->2","4->5","7"].
+ */
+public class Solution228 {
+    public List<String> summaryRanges(int[] nums) {
+        List<String> result = new ArrayList<>();
+        if (nums == null || nums.length == 0) {
+            return result;
+        }
+        int start = nums[0];
+        int end = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == end+1) {
+                end++;
+            } else {
+                if(start == end) {
+                    result.add(String.valueOf(start));
+                } else {
+                    result.add(start+"->"+end);
+                }
+                start = nums[i];
+                end = start;
+            }
+        }
+        if(start == end) {
+            result.add(String.valueOf(start));
+        } else {
+            result.add(start+"->"+end);
+        }
+        return result;
+    }
+}
